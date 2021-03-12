@@ -44,27 +44,27 @@ public class Main {
             ArrayList<Double> wynik2 = new ArrayList<>(0);
 
             Double dzielenie = 1.0;
-            //wynik2.add(1.0);
-            //wynik2.add(1.0);
+            wynik2.add(1.0);
 
 
 
             for (int j = 0; j < list.size(); j++) {
                 if (i != j) {
-                    if (wynik2.size() < 2) {
-                        wynik2.add(-list.get(j).get(0));
-                        wynik2.add(1.0);
-                    } else {
-                        Double x = list.get(j).get(0);
-                        ArrayList<Double> wynik3 = new ArrayList<>(wynik2);
-                        wynik3.add(0, 0.0);
-                        wynik2.add(0.0);
-                        int roz =  wynik2.size();
-                        for (int k = 0; k < roz; k++) {
-                            wynik2.set(k, -wynik2.get(k) * x);
-                            wynik2.set(k, wynik3.get(k) + wynik2.get(k));
 
-                        }
+                    Double x = list.get(j).get(0);
+
+                    ArrayList<Double> wynik3 = new ArrayList<>(wynik2);
+                    wynik3.add(0, 0.0);
+
+                    wynik2.add(0.0);
+
+                    int roz = wynik2.size();
+                    for (int k = 0; k < roz; k++) {
+                        wynik2.set(k, -wynik2.get(k) * x);
+
+                        wynik2.set(k, wynik3.get(k) + wynik2.get(k));
+                        int a = 1;
+
                     }
                     dzielenie *= list.get(i).get(0) - list.get(j).get(0);
                 }
@@ -85,7 +85,6 @@ public class Main {
         ArrayList<ArrayList<Double>> list = readFile();
 
 
-
         for (ArrayList<Double> i : list) {
             for (Double j : i) {
                 System.out.print(j + " ");
@@ -97,17 +96,17 @@ public class Main {
         System.out.println();
 
         ArrayList<Double> wynik = interpolacja(list);
-        for (Double i: wynik) {
+        for (Double i : wynik) {
             System.out.println(i);
         }
 
         int[] xP = new int[11];
         int[] yP = new int[11];
-        for (int i =0; i <= 10; i++){
-            xP[i] = i-5;
-            for (int j = 0; j< wynik.size();j++)
-            yP[i] = (int)(Math.pow((double)xP[i],(double)i)*
-                    wynik.get(j));
+        for (int i = 0; i <= 10; i++) {
+            xP[i] = i - 5;
+            for (int j = 0; j < wynik.size(); j++)
+                yP[i] = (int) (Math.pow((double) xP[i], (double) i) *
+                        wynik.get(j));
 
         }
         MyFrame myFrame = new MyFrame(xP, yP);
