@@ -47,7 +47,6 @@ public class Main {
             wynik2.add(1.0);
 
 
-
             for (int j = 0; j < list.size(); j++) {
                 if (i != j) {
 
@@ -63,7 +62,6 @@ public class Main {
                         wynik2.set(k, -wynik2.get(k) * x);
 
                         wynik2.set(k, wynik3.get(k) + wynik2.get(k));
-                        int a = 1;
 
                     }
                     dzielenie *= list.get(i).get(0) - list.get(j).get(0);
@@ -102,11 +100,16 @@ public class Main {
 
         int[] xP = new int[11];
         int[] yP = new int[11];
+        double a;
         for (int i = 0; i <= 10; i++) {
             xP[i] = i - 5;
-            for (int j = 0; j < wynik.size(); j++)
-                yP[i] = (int) (Math.pow((double) xP[i], (double) i) *
-                        wynik.get(j));
+            for (int j = 0; j < wynik.size(); j++) {
+                yP[i] = (int) (Math.pow((double) xP[i], (double) j) *
+                        wynik.get(j) + yP[i]);
+                a = Math.pow((double) xP[i], (double) j) * wynik.get(j);
+                System.out.println(a);
+            }
+
 
         }
         MyFrame myFrame = new MyFrame(xP, yP);
